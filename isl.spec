@@ -1,3 +1,4 @@
+# TODO: install gdb pretty-printer properly (see files)
 #
 # Conditional build:
 %bcond_without	apidocs		# do not build and package API docs
