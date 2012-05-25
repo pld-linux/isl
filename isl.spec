@@ -1,4 +1,4 @@
-# TODO: install gdb pretty-printer properly (see files)
+# TODO: verify gdb pretty-printers location
 #
 # Conditional build:
 %bcond_without	apidocs		# do not build and package API docs
@@ -17,6 +17,7 @@ Source0:	ftp://ftp.linux.student.kuleuven.be/pub/people/skimo/isl/%{name}-%{vers
 URL:		http://freecode.com/projects/isl
 BuildRequires:	gmp-devel
 %{?with_piplib:BuildRequires:	piplib-devel >= 1.3.6}
+BuildRequires:	rpm-pythonprov
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 %if %{with apidocs}
@@ -25,7 +26,7 @@ BuildRequires:	perl-tools-pod
 BuildRequires:	texlive-format-pdflatex
 %endif
 %{?with_piplib:Requires:	piplib >= 1.3.6}
-# clang?
+# clang can be used to generate interface/isl.py, which is not used afterwards
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -83,6 +84,19 @@ API and internal documentation for isl library.
 %description apidocs -l pl.UTF-8
 Dokumentacja API biblioteki isl.
 
+%package gdb
+Summary:	GDB Python pretty printers for isl types
+Summary(pl.UTF-8):	Skrypty Pythona dla GDB do ładnego wypisywania typów isl
+Group:		Development/Debuggers
+Requires:	gdb
+
+%description gdb
+GDB Python pretty printers for most of isl objects.
+
+%description gdb -l pl.UTF-8
+Skrypty Pythona dla GDB do ładnego wypisywania większości obiektów
+isl.
+
 %prep
 %setup -q
 
@@ -121,11 +135,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/libisl.a
 
-# TODO: package gdb pretty printer properly
-#%{_libdir}/libisl.so.*.*.*-gdb.py
-
 %if %{with apidocs}
 %files apidocs
 %defattr(644,root,root,755)
 %doc doc/manual.pdf
 %endif
+
+%files gdb
+%defattr(644,root,root,755)
+%{_libdir}/libisl.so.*.*.*-gdb.py
