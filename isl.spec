@@ -112,6 +112,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+install -d $RPM_BUILD_ROOT%{_datadir}/gdb/auto-load/usr/%{_lib}
+mv $RPM_BUILD_ROOT%{_libdir}/libisl.so.*.*.*-gdb.py $RPM_BUILD_ROOT%{_datadir}/gdb/auto-load/usr/%{_lib}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -143,4 +146,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files gdb
 %defattr(644,root,root,755)
-%{_libdir}/libisl.so.*.*.*-gdb.py
+%{_datadir}/gdb/auto-load/usr/%{_lib}/libisl.so.*.*.*-gdb.py
