@@ -8,12 +8,12 @@
 Summary:	Library for manipulating sets and relations of integer points bounded by linear constraints
 Summary(pl.UTF-8):	Biblioteka operacji na zbiorach i relacjach punktów całkowitoliczbowych z ograniczeniami liniowymi
 Name:		isl
-Version:	0.09
+Version:	0.10
 Release:	1
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	ftp://ftp.linux.student.kuleuven.be/pub/people/skimo/isl/%{name}-%{version}.tar.lzma
-# Source0-md5:	d6ccfc11197c958c4e7f16937ca56004
+# Source0-md5:	7f79ea119c85f03d691f8743d0b2aac1
 URL:		http://freecode.com/projects/isl
 BuildRequires:	gmp-devel
 %{?with_piplib:BuildRequires:	piplib-devel >= 1.3.6}
@@ -125,7 +125,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog
 %attr(755,root,root) %{_libdir}/libisl.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libisl.so.9
+%attr(755,root,root) %ghost %{_libdir}/libisl.so.10
 
 %files devel
 %defattr(644,root,root,755)
