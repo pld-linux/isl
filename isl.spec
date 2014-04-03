@@ -4,12 +4,12 @@
 %bcond_without	apidocs		# do not build and package API docs
 %bcond_without	static_libs	# don't build static libraries
 %bcond_without	piplib		# PipLib solver (stubs are used instead)
-#
+
 Summary:	Library for manipulating sets and relations of integer points bounded by linear constraints
 Summary(pl.UTF-8):	Biblioteka operacji na zbiorach i relacjach punktów całkowitoliczbowych z ograniczeniami liniowymi
 Name:		isl
 Version:	0.12.2
-Release:	1
+Release:	2
 License:	MIT
 Group:		Libraries
 Source0:	http://isl.gforge.inria.fr/%{name}-%{version}.tar.lzma
@@ -77,6 +77,9 @@ Statyczna biblioteka isl.
 Summary:	isl API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki isl
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 API and internal documentation for isl library.
