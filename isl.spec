@@ -3,20 +3,18 @@
 # Conditional build:
 %bcond_without	apidocs		# do not build and package API docs
 %bcond_without	static_libs	# don't build static libraries
-%bcond_without	piplib		# PipLib solver (stubs are used instead)
 
 Summary:	Library for manipulating sets and relations of integer points bounded by linear constraints
 Summary(pl.UTF-8):	Biblioteka operacji na zbiorach i relacjach punktów całkowitoliczbowych z ograniczeniami liniowymi
 Name:		isl
-Version:	0.12.2
-Release:	2
+Version:	0.13
+Release:	1
 License:	MIT
 Group:		Libraries
-Source0:	http://isl.gforge.inria.fr/%{name}-%{version}.tar.lzma
-# Source0-md5:	b7d59eb79d3884e14b9788cc396f7687
+Source0:	http://isl.gforge.inria.fr/%{name}-%{version}.tar.xz
+# Source0-md5:	c9fa72eb44de30485bde3cd8b9fc50f9
 URL:		http://freecode.com/projects/isl
 BuildRequires:	gmp-devel
-%{?with_piplib:BuildRequires:	piplib-devel >= 1.3.6}
 BuildRequires:	rpm-pythonprov
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
@@ -25,7 +23,6 @@ BuildRequires:	perl-base
 BuildRequires:	perl-tools-pod
 BuildRequires:	texlive-format-pdflatex
 %endif
-%{?with_piplib:Requires:	piplib >= 1.3.6}
 # clang can be used to generate interface/isl.py, which is not used afterwards
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -53,7 +50,6 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki isl
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gmp-devel
-%{?with_piplib:Requires:	piplib-devel >= 1.3.6}
 
 %description devel
 Header files for isl library.
@@ -105,8 +101,8 @@ isl.
 
 %build
 %configure \
-	--disable-silent-rules \
-	%{?with_piplib:--with-piplib=system}
+	--disable-silent-rules
+
 %{__make}
 
 %install
@@ -128,7 +124,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog
 %attr(755,root,root) %{_libdir}/libisl.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libisl.so.10
+%attr(755,root,root) %ghost %{_libdir}/libisl.so.13
 
 %files devel
 %defattr(644,root,root,755)
