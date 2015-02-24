@@ -8,7 +8,7 @@ Summary:	Library for manipulating sets and relations of integer points bounded b
 Summary(pl.UTF-8):	Biblioteka operacji na zbiorach i relacjach punktów całkowitoliczbowych z ograniczeniami liniowymi
 Name:		isl
 Version:	0.14
-Release:	1
+Release:	2
 License:	MIT
 Group:		Libraries
 Source0:	http://isl.gforge.inria.fr/%{name}-%{version}.tar.xz
