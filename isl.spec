@@ -7,13 +7,13 @@
 Summary:	Library for manipulating sets and relations of integer points bounded by linear constraints
 Summary(pl.UTF-8):	Biblioteka operacji na zbiorach i relacjach punktów całkowitoliczbowych z ograniczeniami liniowymi
 Name:		isl
-Version:	0.14
-Release:	2
+Version:	0.15
+Release:	1
 License:	MIT
 Group:		Libraries
 Source0:	http://isl.gforge.inria.fr/%{name}-%{version}.tar.xz
-# Source0-md5:	3d6b6a1cddd165fae2af5487c5531b09
-URL:		http://freecode.com/projects/isl
+# Source0-md5:	626d0452f3c9a36aeb3c225ff5e7c642
+URL:		http://isl.gforge.inria.fr/
 BuildRequires:	gmp-devel
 BuildRequires:	rpm-pythonprov
 BuildRequires:	tar >= 1:1.22
@@ -112,7 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_datadir}/gdb/auto-load/usr/%{_lib}
-mv $RPM_BUILD_ROOT%{_libdir}/libisl.so.*.*.*-gdb.py $RPM_BUILD_ROOT%{_datadir}/gdb/auto-load/usr/%{_lib}
+%{__mv} $RPM_BUILD_ROOT%{_libdir}/libisl.so.*.*.*-gdb.py $RPM_BUILD_ROOT%{_datadir}/gdb/auto-load/usr/%{_lib}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -124,7 +124,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog
 %attr(755,root,root) %{_libdir}/libisl.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libisl.so.13
+%attr(755,root,root) %ghost %{_libdir}/libisl.so.15
 
 %files devel
 %defattr(644,root,root,755)
