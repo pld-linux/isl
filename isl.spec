@@ -73,9 +73,7 @@ Statyczna biblioteka isl.
 Summary:	isl API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki isl
 Group:		Documentation
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 API and internal documentation for isl library.
