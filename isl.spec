@@ -7,14 +7,19 @@
 Summary:	Library for manipulating sets and relations of integer points bounded by linear constraints
 Summary(pl.UTF-8):	Biblioteka operacji na zbiorach i relacjach punktów całkowitoliczbowych z ograniczeniami liniowymi
 Name:		isl
-Version:	0.22.1
+Version:	0.24
 Release:	1
 License:	MIT
 Group:		Libraries
-Source0:	http://isl.gforge.inria.fr/%{name}-%{version}.tar.xz
-# Source0-md5:	6e124849a9b62e3e2d5d51e955323f6e
-URL:		http://isl.gforge.inria.fr/
+Source0:	https://libisl.sourceforge.io/%{name}-%{version}.tar.xz
+# Source0-md5:	fae030f604a9537adc2502990a8ab4d1
+Patch0:		%{name}-opt.patch
+URL:		https://libisl.sourceforge.io/
+BuildRequires:	autoconf >= 2.50
+BuildRequires:	automake
 BuildRequires:	gmp-devel
+BuildRequires:	libstdc++-devel >= 6:4.7
+BuildRequires:	libtool >= 2:1.5
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpm-pythonprov
 BuildRequires:	tar >= 1:1.22
@@ -26,6 +31,10 @@ BuildRequires:	texlive-format-pdflatex
 %endif
 # clang can be used to generate interface/isl.py, which is not used afterwards
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+# see m4/ax_cc_maxopt.m4
+%define		specflags	-fomit-frame-pointer -fstrict-aliasing -ffast-math
+%define		specflags_ia32	-malign-double
 
 %description
 isl is a library for manipulating sets and relations of integer points
@@ -97,9 +106,16 @@ isl.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
+%{__libtoolize}
+%{__aclocal} -I m4
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure \
+	--enable-portable-binary \
 	--disable-silent-rules
 
 %{__make}
@@ -126,7 +142,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog
 %attr(755,root,root) %{_libdir}/libisl.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libisl.so.22
+%attr(755,root,root) %ghost %{_libdir}/libisl.so.23
 
 %files devel
 %defattr(644,root,root,755)
