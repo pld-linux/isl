@@ -15,6 +15,7 @@ Source0:	http://isl.gforge.inria.fr/%{name}-%{version}.tar.xz
 # Source0-md5:	12caf7eea20946c581ace61302b1c876
 URL:		http://isl.gforge.inria.fr/
 BuildRequires:	gmp-devel
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpm-pythonprov
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
