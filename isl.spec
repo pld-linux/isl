@@ -7,12 +7,12 @@
 Summary:	Library for manipulating sets and relations of integer points bounded by linear constraints
 Summary(pl.UTF-8):	Biblioteka operacji na zbiorach i relacjach punktów całkowitoliczbowych z ograniczeniami liniowymi
 Name:		isl
-Version:	0.24
+Version:	0.26
 Release:	1
 License:	MIT
 Group:		Libraries
 Source0:	https://libisl.sourceforge.io/%{name}-%{version}.tar.xz
-# Source0-md5:	fae030f604a9537adc2502990a8ab4d1
+# Source0-md5:	f2b56e8da688eba89838d414470da85f
 Patch0:		%{name}-opt.patch
 URL:		https://libisl.sourceforge.io/
 BuildRequires:	autoconf >= 2.50
