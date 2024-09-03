@@ -7,19 +7,19 @@
 Summary:	Library for manipulating sets and relations of integer points bounded by linear constraints
 Summary(pl.UTF-8):	Biblioteka operacji na zbiorach i relacjach punktów całkowitoliczbowych z ograniczeniami liniowymi
 Name:		isl
-Version:	0.26
+Version:	0.27
 Release:	1
 License:	MIT
 Group:		Libraries
 Source0:	https://libisl.sourceforge.io/%{name}-%{version}.tar.xz
-# Source0-md5:	f2b56e8da688eba89838d414470da85f
+# Source0-md5:	11ee9d335b227ea2e8579c4ba6e56138
 Patch0:		%{name}-opt.patch
 URL:		https://libisl.sourceforge.io/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	gmp-devel
 BuildRequires:	libstdc++-devel >= 6:4.7
-BuildRequires:	libtool >= 2:1.5
+BuildRequires:	libtool >= 2:2
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpm-pythonprov
 BuildRequires:	tar >= 1:1.22
